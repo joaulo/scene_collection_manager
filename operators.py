@@ -4,6 +4,16 @@ import pprint
 import bpy
 
 
+def remove_empty(collection):
+    for child in collection.children:
+        remove_empty(child)
+
+    if not len(collection.children) and not len(collection.objects):
+        bpy.data.collections.remove(collection)
+
+# remove_empty(bpy.context.scene.collection)
+
+
 # ------------------------------------------------------------------------
 #    Operators
 # ------------------------------------------------------------------------
@@ -46,6 +56,7 @@ class LoadCollectionsSettings(bpy.types.Operator):
             #         for p, val in plist.items():
             #             # print(p, val)
             #             setattr(scene, p, val)
+
         print('loading completed')
         return {'FINISHED'}
 
@@ -71,6 +82,20 @@ class SaveCollectionsSettings(bpy.types.Operator):
         # container for render settings
         pl['collections'] = {}
         print('reading collections settings...')
+
+        if len(bpy.data.collections) > 0:
+            print('COLLECTIONS')
+            for col in bpy.data.collections:
+                if len(col.objects) > 0:
+                    print ("True")
+                    for obj in col.objects:
+                        print(obj)
+                else:
+                    print ("False")
+                print(col)
+        else:
+            print('NO_COLLECTIONS')
+
         # for p in scene.render.bl_rna.properties:
         #     if p.identifier in {'rna_type', 'stamp_background', 'stamp_foreground'}:
         #         continue
