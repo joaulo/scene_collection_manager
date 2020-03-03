@@ -21,7 +21,7 @@ class LoadCollectionsSettings(bpy.types.Operator):
     def execute(self, context):
         print("load configuration from file and set values to scene")
         scene = context.scene
-        with open(scene.layer_collection_manager.load_render_settings, 'r', encoding='utf-8') as f:
+        with open(scene.layer_collections_manager.load_collections_settings, 'r', encoding='utf-8') as f:
             pl = json.load(f)
             pprint.pprint(pl)
             # for section, plist in pl.items():
@@ -63,7 +63,7 @@ class SaveCollectionsSettings(bpy.types.Operator):
     def execute(self, context):
         scene = context.scene
         print('-> save collections settings to file:',
-              scene.layer_collection_manager.save_render_settings)
+              scene.layer_collections_manager.save_collections_settings)
 
         # get properties list
         # p = {sett: getattr(scene.render, sett) for sett in dir(scene.render)}
@@ -102,7 +102,7 @@ class SaveCollectionsSettings(bpy.types.Operator):
 
         # pprint.pprint(pl)
 
-        with open(scene.layer_collection_manager.save_collections_settings, 'w', encoding='utf-8') as f:
+        with open(scene.layer_collections_manager.save_collections_settings, 'w', encoding='utf-8') as f:
             json.dump(pl, f, ensure_ascii=False, indent=4)
 
         print('saving completed')

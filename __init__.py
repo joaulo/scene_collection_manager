@@ -10,7 +10,7 @@ import bpy
 from bpy.props import PointerProperty
 
 bl_info = {
-    "name": "Layer Collection Manager",
+    "name": "Layer Collections Manager",
     "author": "joaulo",
     "version": (1, 0, 0),
     "blender": (2, 80, 0),
@@ -34,12 +34,12 @@ classes = properties.classes + operators.classes + panels.classes
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    bpy.types.Scene.layer_collection_manager = PointerProperty(
+    bpy.types.Scene.layer_collections_manager = PointerProperty(
         type=properties.LayerCollectionManagerProperties)
 
 
 def unregister():
-    del bpy.types.Scene.layer_collection_manager
+    del bpy.types.Scene.layer_collections_manager
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
 

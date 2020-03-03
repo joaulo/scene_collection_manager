@@ -5,7 +5,7 @@ import bpy
 from bpy.props import StringProperty
 
 
-class LayerCollectionManagerProperties(bpy.types.PropertyGroup):
+class LayerCollectionsManagerProperties(bpy.types.PropertyGroup):
 
     path_dir: StringProperty(
         name="Output dir:",
