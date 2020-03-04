@@ -32,4 +32,4 @@ class LayerCollectionsManagerProperties(bpy.types.PropertyGroup):
     )
 
 
-classes = (LayerCollectionManagerProperties,)
+classes = (LayerCollectionsManagerProperties,)

@@ -1,17 +1,22 @@
-import os
 import json
 import pprint
 import bpy
 
 
-def remove_empty(collection):
+def get_collections_state(collection, cstate):
     for child in collection.children:
-        remove_empty(child)
+        cstate.append(get_collections_state(child, cstate))
+    return [collection.name, collection.exclude]
 
-    if not len(collection.children) and not len(collection.objects):
-        bpy.data.collections.remove(collection)
 
-# remove_empty(bpy.context.scene.collection)
+def set_collections_state(collection, plist):
+    for child in collection.children:
+        set_collections_state(child, plist)
+    # print('search', collection.name, 'in', plist)
+    value = plist.get(collection.name, None)
+    # print('setting value to:', value)
+    if value is not None:
+        collection.exclude = value
 
 
 # ------------------------------------------------------------------------
@@ -34,28 +39,14 @@ class LoadCollectionsSettings(bpy.types.Operator):
         with open(scene.layer_collections_manager.load_collections_settings, 'r', encoding='utf-8') as f:
             pl = json.load(f)
             pprint.pprint(pl)
-            # for section, plist in pl.items():
-            #     # print(section)
-            #     if section == 'render':
-            #         print('loading render params...')
-            #         for p, val in plist.items():
-            #             # print(p, val)
-            #             setattr(scene.render, p, val)
-            #     elif section == 'image_settings':
-            #         print('loading image_settings...')
-            #         for p, val in plist.items():
-            #             # print(p, val)
-            #             setattr(scene.render.image_settings, p, val)
-            #     elif section == 'ffmpeg':
-            #         print('loading ffmpeg...')
-            #         for p, val in plist.items():
-            #             # print(p, val)
-            #             setattr(scene.render.ffmpeg, p, val)
-            #     elif section == 'frames':
-            #         print('loading frames...')
-            #         for p, val in plist.items():
-            #             # print(p, val)
-            #             setattr(scene, p, val)
+
+            # check scene name
+            if pl['scene'] != scene.name:
+                print('WARNING: scene name is different!')
+
+            # set collections
+            plist = pl['collections']
+            set_collections_state(context.view_layer.layer_collection, plist)
 
         print('loading completed')
         return {'FINISHED'}
@@ -79,53 +70,33 @@ class SaveCollectionsSettings(bpy.types.Operator):
         # get properties list
         # p = {sett: getattr(scene.render, sett) for sett in dir(scene.render)}
         pl = {}
-        # container for render settings
-        pl['collections'] = {}
+        # current scene
+        pl['scene'] = scene.name
+
+        # container for collection settings
         print('reading collections settings...')
+        cstate = []
+        get_collections_state(context.view_layer.layer_collection, cstate)
 
-        if len(bpy.data.collections) > 0:
-            print('COLLECTIONS')
-            for col in bpy.data.collections:
-                if len(col.objects) > 0:
-                    print ("True")
-                    for obj in col.objects:
-                        print(obj)
-                else:
-                    print ("False")
-                print(col)
-        else:
-            print('NO_COLLECTIONS')
+        # print(cstate)
 
-        # for p in scene.render.bl_rna.properties:
-        #     if p.identifier in {'rna_type', 'stamp_background', 'stamp_foreground'}:
-        #         continue
-        #     if p.is_readonly:
-        #         continue
-        #     pl['render'][p.identifier] = getattr(scene.render, p.identifier)
-        # # container for image settings specific to still images rendering
-        # pl['image_settings'] = {}
-        # print('reading image settings...')
-        # for p in scene.render.image_settings.bl_rna.properties:
-        #     if p.is_readonly:
-        #         continue
-        #     # print(p)
-        #     pl['image_settings'][p.identifier] = getattr(scene.render.image_settings, p.identifier)
-        # # container for ffmpeg settings specific to animation rendering
-        # pl['ffmpeg'] = {}
-        # print('reading ffmpeg settings...')
-        # for p in scene.render.ffmpeg.bl_rna.properties:
-        #     if p.is_readonly:
-        #         continue
-        #     # print(p)
-        #     pl['ffmpeg'][p.identifier] = getattr(scene.render.ffmpeg, p.identifier)
-        # # container for frames settinga specific to animation rendering
-        # pl['frames'] = {}
-        # print('reading animation frames settings...')
-        # pl['frames']['frame_start'] = getattr(scene, 'frame_start')
-        # pl['frames']['frame_end'] = getattr(scene, 'frame_end')
-        # pl['frames']['frame_step'] = getattr(scene, 'frame_step')
+        pl['collections'] = {}
+        pl['collections'].update(cstate)
 
-        # pprint.pprint(pl)
+        pprint.pprint(pl)
+
+        # if len(bpy.data.collections) > 0:
+        #     print('COLLECTIONS')
+        #     for col in bpy.data.collections:
+        #         if len(col.objects) > 0:
+        #             print ("True")
+        #             for obj in col.objects:
+        #                 print(obj)
+        #         else:
+        #             print ("False")
+        #         print(col)
+        # else:
+        #     print('NO_COLLECTIONS')
 
         with open(scene.layer_collections_manager.save_collections_settings, 'w', encoding='utf-8') as f:
             json.dump(pl, f, ensure_ascii=False, indent=4)

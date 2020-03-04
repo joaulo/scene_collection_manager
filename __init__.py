@@ -35,7 +35,7 @@ def register():
     for cls in classes:
         bpy.utils.register_class(cls)
     bpy.types.Scene.layer_collections_manager = PointerProperty(
-        type=properties.LayerCollectionManagerProperties)
+        type=properties.LayerCollectionsManagerProperties)
 
 
 def unregister():
