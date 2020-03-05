@@ -15,7 +15,7 @@ class LayerCollectionsManagerProperties(bpy.types.PropertyGroup):
         subtype='DIR_PATH'
     )
 
-    save_render_settings: StringProperty(
+    save_collections_settings: StringProperty(
         name="Save collections settings to file:",
         description="Choose a file to save collections settings",
         default="",
@@ -23,7 +23,7 @@ class LayerCollectionsManagerProperties(bpy.types.PropertyGroup):
         subtype='FILE_PATH'
     )
 
-    load_render_settings: StringProperty(
+    load_collections_settings: StringProperty(
         name="Load collections settings from file:",
         description="Choose a file to load collection settings",
         default="",

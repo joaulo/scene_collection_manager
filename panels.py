@@ -26,7 +26,7 @@ class Jswk_PT_layer_collections_manager(LayerCollectionsManagerPanel, bpy.types.
         scene = context.scene
         lcm = scene.layer_collections_manager
 
-        layout.prop(lcm, "path_dir")
+        # layout.prop(lcm, "path_dir")
         layout.separator()
         layout.prop(lcm, "load_collections_settings")
         layout.operator("load.collections_settings")
