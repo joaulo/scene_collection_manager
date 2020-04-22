@@ -10,13 +10,16 @@ def get_collections_state(collection, cstate):
 
 
 def set_collections_state(collection, plist):
-    for child in collection.children:
-        set_collections_state(child, plist)
     # print('search', collection.name, 'in', plist)
     value = plist.get(collection.name, None)
     # print('setting value to:', value)
     if value is not None:
+        # print("found collection: ", collection.name)
         collection.exclude = value
+        # print(collection.name, " set to: ", collection.exclude)
+
+    for child in collection.children:
+        set_collections_state(child, plist)
 
 
 # ------------------------------------------------------------------------
