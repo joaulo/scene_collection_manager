@@ -26,9 +26,9 @@ def set_collections_state(collection, plist):
 #    Operators
 # ------------------------------------------------------------------------
 
-class LoadCollectionsSettings(bpy.types.Operator):
+class JSWK_OT_load_collections_settings(bpy.types.Operator):
     """Load collections settings previously saved to configuration file"""
-    bl_idname = "load.collections_settings"
+    bl_idname = "jswk.load_collections_settings"
     bl_label = "Load Collections Settings"
     bl_options = {'REGISTER'}
 
@@ -55,9 +55,9 @@ class LoadCollectionsSettings(bpy.types.Operator):
         return {'FINISHED'}
 
 
-class SaveCollectionsSettings(bpy.types.Operator):
+class JSWK_OT_save_collections_settings(bpy.types.Operator):
     """Save collections settings to configuration file"""
-    bl_idname = "save.collections_settings"
+    bl_idname = "jswk.save_collections_settings"
     bl_label = "Save Collections Settings"
     bl_options = {'REGISTER'}
 
@@ -109,6 +109,6 @@ class SaveCollectionsSettings(bpy.types.Operator):
 
 
 classes = (
-    LoadCollectionsSettings,
-    SaveCollectionsSettings,
+    JSWK_OT_load_collections_settings,
+    JSWK_OT_save_collections_settings,
 )

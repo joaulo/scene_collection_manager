@@ -13,8 +13,8 @@ class LayerCollectionsManagerPanel:
     bl_options = {'DEFAULT_CLOSED'}
 
 
-class Jswk_PT_layer_collections_manager(LayerCollectionsManagerPanel, bpy.types.Panel):
-    bl_idname = "Jswk_PT_layer_collections_manager"
+class JSWK_PT_layer_collections_manager(LayerCollectionsManagerPanel, bpy.types.Panel):
+    bl_idname = "JSWK_PT_layer_collections_manager"
     bl_label = "Layer Collections Settings"
 
 #    @classmethod
@@ -29,14 +29,14 @@ class Jswk_PT_layer_collections_manager(LayerCollectionsManagerPanel, bpy.types.
         # layout.prop(lcm, "path_dir")
         layout.separator()
         layout.prop(lcm, "load_collections_settings")
-        layout.operator("load.collections_settings")
+        layout.operator("jswk.load_collections_settings")
         layout.separator()
         layout.prop(lcm, "save_collections_settings")
-        layout.operator("save.collections_settings")
+        layout.operator("jswk.save_collections_settings")
 
 
-# class Jswk_PT_lcm_load_settings(LayerCollectionsManagerPanel, bpy.types.Panel):
-#     bl_parent_id = "Jswk_PT_layer_collections_manager"
+# class JSWK_PT_lcm_load_settings(LayerCollectionsManagerPanel, bpy.types.Panel):
+#     bl_parent_id = "JSWK_PT_layer_collections_manager"
 #     bl_label = "Load Settings"
 #
 #     def draw(self, context):
@@ -48,8 +48,8 @@ class Jswk_PT_layer_collections_manager(LayerCollectionsManagerPanel, bpy.types.
 #         layout.operator("load.collections_settings")
 #
 #
-# class Jswk_PT_lcm_save_settings(LayerCollectionsManagerPanel, bpy.types.Panel):
-#     bl_parent_id = "Jswk_PT_layer_collections_manager"
+# class JSWK_PT_lcm_save_settings(LayerCollectionsManagerPanel, bpy.types.Panel):
+#     bl_parent_id = "JSWK_PT_layer_collections_manager"
 #     bl_label = "Save Settings"
 #
 #     def draw(self, context):
@@ -62,7 +62,7 @@ class Jswk_PT_layer_collections_manager(LayerCollectionsManagerPanel, bpy.types.
 
 
 classes = (
-    Jswk_PT_layer_collections_manager,
-    # Jswk_PT_lcm_load_settings,
-    # Jswk_PT_lcm_save_settings,
+    JSWK_PT_layer_collections_manager,
+    # JSWK_PT_lcm_load_settings,
+    # JSWK_PT_lcm_save_settings,
 )
