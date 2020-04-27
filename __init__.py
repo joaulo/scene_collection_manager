@@ -11,15 +11,15 @@ from bpy.props import PointerProperty
 
 bl_info = {
     "name": "Scene Collections Manager",
-    "author": "joaulo",
+    "author": "joaulo <jsoftworks@joaulo.com>",
     "version": (1, 0, 0),
     "blender": (2, 80, 0),
+    "category": "Scene",
     "location": "Scene properties panel",
     "description": "save/load collections exclusions",
     # "warning": "",  # used for warning icon and text in addons panel
     "wiki_url": "",
     # "tracker_url": "",
-    "category": "Scene",
 }
 
 
