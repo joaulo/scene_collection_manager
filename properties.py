@@ -5,7 +5,7 @@ import bpy
 from bpy.props import StringProperty
 
 
-class LayerCollectionsManagerProperties(bpy.types.PropertyGroup):
+class SceneCollectionsManagerProperties(bpy.types.PropertyGroup):
 
     path_dir: StringProperty(
         name="Output dir:",
@@ -32,4 +32,4 @@ class LayerCollectionsManagerProperties(bpy.types.PropertyGroup):
     )
 
 
-classes = (LayerCollectionsManagerProperties,)
+classes = (SceneCollectionsManagerProperties,)
