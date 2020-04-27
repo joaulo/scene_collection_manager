@@ -18,7 +18,7 @@ bl_info = {
     "location": "Scene properties panel",
     "description": "save/load collections exclusions",
     # "warning": "",  # used for warning icon and text in addons panel
-    "wiki_url": "",
+    "wiki_url": "https://www.joaulo.com/softworks/projects/scene-collection-manager/",
     # "tracker_url": "",
 }
 
