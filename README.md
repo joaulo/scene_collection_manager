@@ -1,2 +1,2 @@
-# layer_collection_manager
+# scene_collection_manager
 Help manage, save and restore collection exclusion
