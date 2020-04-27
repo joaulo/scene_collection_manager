@@ -1,0 +1,3 @@
+* manage file extension automatically
+* add more selection settings to the manager: selection, show in 3D view and render (as shown in the Outliner by the icons:arrow, eye and monitor)
+* add the status of the individual objects contained in the Collections to the configuration files
