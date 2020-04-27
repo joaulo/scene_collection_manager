@@ -15,7 +15,7 @@ class SceneCollectionsManagerPanel:
 
 class JSWK_PT_scene_collections_manager(SceneCollectionsManagerPanel, bpy.types.Panel):
     bl_idname = "JSWK_PT_scene_collections_manager"
-    bl_label = "Scene Collections Settings"
+    bl_label = "Scene Collections Manager"
 
 #    @classmethod
 #    def poll(self,context):
