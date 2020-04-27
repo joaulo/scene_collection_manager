@@ -1,11 +1,13 @@
 ![Blender Render Manager](https://www.joaulo.com/media/projects/project_scene-collection-manager/preview_big.jpg)
-# layer_collection_manager
+# scene_collection_manager
 
 This addon derives from the need to work on a complex project with a PC with limited resources. To overcome the saturation of the hardware avoiding continuous slowdowns and crashes during the rendering phase, I made this addon to facilitate the selection of the active/excluded collections with a few clicks. It is currently in its first release and probably will grow over time with new features.
+
 
 # Installation
 
 It installs like a standard Blender addon, just download the .zip file on your PC, then go to *Blender> Edit> Preferences...* follow the traditional installation. For more information, refer to the [Blender manual page](https://docs.blender.org/manual/en/latest/editors/preferences/addons.html?highlight=preferences).
+
 
 # How does it work?
 
@@ -28,6 +30,7 @@ With this addon you can **activate or exclude** the *Collections* in the scene a
 
 Example: if in your scene there are several frames (cameras) to be rendered and in each camera/frame you can see only a portion of the scene, it is possible to "turn off" the unseen collections to reduce the system load during rendering or even just editing the selected view. By saving this setup for each view it is therefore possible to easily switch from one configuration to another with a few clicks.
 
+
 # Limitations and known problems
 
 * currently the extension of the files saved and loaded by the addon is not imposed, however it will be adopted the extension "*.scm*" in the future
@@ -45,6 +48,7 @@ Example: if in your scene there are several frames (cameras) to be rendered and 
    * *verify that the path in the field is the full path to the file:*
 
    ![full_path](https://www.joaulo.com/media/uploads/2020/04/27/screenshot_20200427_131432.jpeg)
+
 
 # TO DO
 
