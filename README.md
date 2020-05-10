@@ -38,7 +38,7 @@ Example: if in your scene there are several frames (cameras) to be rendered and 
 
    * *select the gear icon at the top right:*
 
-   ![path settings](https://www.joaulo.com/media/uploads/2020/04/26/screenshot_20200426_211442.jpeg)
+   ![path settings](https://www.joaulo.com/media/uploads/2020/05/10/screenshot_20200426_211442.jpeg)
 
    * *disable the checkbox:*
 
