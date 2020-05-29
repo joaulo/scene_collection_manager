@@ -6,7 +6,7 @@ This addon derives from the need to work on a complex project with a PC with lim
 
 # Installation
 
-It installs like a standard Blender addon, just download the .zip file on your PC, then go to *Blender> Edit> Preferences...* follow the traditional installation. For more information, refer to the [Blender manual page](https://docs.blender.org/manual/en/latest/editors/preferences/addons.html?highlight=preferences).
+It installs like a standard Blender addon, just download the .zip file on your PC, then go to *Blender> Edit> Preferences...*, use the *Install…* button and use the File Browser to select the .zip add-on file. For more information, refer to the [Blender manual page](https://docs.blender.org/manual/en/latest/editors/preferences/addons.html?highlight=preferences).
 
 
 # How does it work?
@@ -38,7 +38,7 @@ Example: if in your scene there are several frames (cameras) to be rendered and 
 
    * *select the gear icon at the top right:*
 
-   ![path settings](https://www.joaulo.com/media/uploads/2020/04/26/screenshot_20200426_211442.jpeg)
+   ![path settings](https://www.joaulo.com/media/uploads/2020/05/10/screenshot_20200426_211442.jpeg)
 
    * *disable the checkbox:*
 
